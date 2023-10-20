@@ -45,11 +45,44 @@ int push_back(vector* arr, unsigned char* val) {
 
 	return 0;
 }
+unsigned char* get_element(vector* arr, size_t index) {
+	if (arr == NULL) {
+		return NULL;
+	} else {
+		if (index >= arr->size) {
+			return NULL;
+		} else {
+			return &(arr->buffer[index]);
+		}
+	}
+}
+
+// Return element that we delete
+unsigned char erase(vector* arr, size_t index) {
+	if (arr == NULL) {
+		return NULL;
+	} else {
+		if (index >= arr->size) {
+			return NULL;
+		} else {
+			unsigned char result = *get_element(arr, index);
+			for (size_t i = index + 1; i < arr->size; ++i) {
+				arr->buffer[i - 1] = arr->buffer[i];
+			}
+			--arr->size;
+			if (arr->size <= arr->capacity / 4) {
+					arr->capacity /= 2;
+					arr->buffer = realloc(arr->buffer, arr->capacity);
+				    if (arr->buffer == NULL) {
+						return NULL;
+					}
+			}
+			return result;
+		}
+	}
+}
+
 /*
-unsigned char* get_element(vector*, size_t);
-
-unsigned char* erase(vector*, size_t);
-
 bool empty(vector*);
 
 size_t size(vector*);

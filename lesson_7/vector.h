@@ -15,7 +15,7 @@ int push_back(vector*, unsigned char*);
 
 unsigned char* get_element(vector*, size_t);
 
-unsigned char* erase(vector*, size_t);
+unsigned char erase(vector*, size_t);
 
 bool empty(vector*);
 

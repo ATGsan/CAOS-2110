@@ -10,10 +10,14 @@ int main() {
 	unsigned char lnum = 58;
 
 	push_back(&arr, &num);
-	printf("%u\n", arr.buffer[0]);
+	printf("%u\n", *get_element(&arr, 0));
 
 	push_back(&arr, &lnum);
-	printf("%u %u\n", arr.buffer[0], arr.buffer[1]);
+	printf("%u %u\n", *get_element(&arr, 0), *get_element(&arr, 1));
+
+	printf("%u\n", erase(&arr, 0));
+
+	printf("%u\n", *get_element(&arr, 0));
 
 	destructor(&arr);
     return 0;
